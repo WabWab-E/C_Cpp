@@ -10,7 +10,7 @@
 // 스피드전의 경우 두 팀의 실력의 합이 같으면 비기게 되고,
 // 아이템전의 경우 두 팀의 가장 높은 실력이 같으면 비기게 된다.
 
-// 09-02-05:28 오답 - 실행결과는 잘 나오는데 왜 오답인지 모르겠음
+// 09-02-07:01 정답 - 입력값의 범위를 정하는 코드가 없어서 오답인줄 알았지만 사실은 결과값 계산식이 하나 빠져있었다 ^^;
 
 int main()
 {
@@ -34,7 +34,7 @@ int main()
     B_M = malloc(sizeof(int) * T);
     E_M = malloc(sizeof(int) * T);
 
-    if (T >= 1 || T <= 1000)
+    if (T >= 1 && T <= 1000)
     {
 
         for (i = 0; i < T; i++)
@@ -47,9 +47,24 @@ int main()
 
         for (i = 0; i < T; i++)
         {
+            // while (1)
+            // {
             scanf("%d %d %d %d %d %d %d %d",
                   &B_Team[0], &B_Team[1], &B_Team[2], &B_Team[3],
                   &E_Team[0], &E_Team[1], &E_Team[2], &E_Team[3]);
+
+            //     if (1 <= B_Team[0] && B_Team[0] <= 1000 &&
+            //         1 <= B_Team[1] && B_Team[1] <= 1000 &&
+            //         1 <= B_Team[2] && B_Team[2] <= 1000 &&
+            //         1 <= B_Team[3] && B_Team[3] <= 1000 &&
+            //         1 <= E_Team[0] && E_Team[0] <= 1000 &&
+            //         1 <= E_Team[1] && E_Team[1] <= 1000 &&
+            //         1 <= E_Team[2] && E_Team[2] <= 1000 &&
+            //         1 <= E_Team[3] && E_Team[3] <= 1000)
+            //     {
+            //         break;
+            //     }
+            // }
 
             // 두팀의 합 구하기
             for (j = 0; j < sizeof(B_Team) / sizeof(int); j++)
@@ -89,7 +104,14 @@ int main()
 
             else if (B_S[i] == E_S[i])
             {
-                printf("R\n");
+                if (B_M[i] > E_M[i])
+                {
+                    printf("I\n");
+                }
+                else
+                {
+                    printf("R\n");
+                }
             }
             else if (B_M[i] == E_M[i])
             {
