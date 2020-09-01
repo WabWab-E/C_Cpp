@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+// S or T
+
+// S를 입력받으면 커서가 1칸
+// T를 입력받으면 커서가 위치해있는칸에서 가장 가까운 4의 배수만큼 이동
+
 int main()
 {
     int i;
